@@ -8,12 +8,13 @@ function App() {
     <div className="App">
       <Router>
         <h1>Store</h1>
-        <Route path={"/product"} >
-          <ProductPage />
-        </Route>
         <Route path={"/"} exact>
           <Home />
         </Route>
+        <Route path={"/product"} >
+          <ProductPage />
+        </Route>
+
 
       </Router>
     </div>
