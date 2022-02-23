@@ -14,8 +14,9 @@ function App() {
         <Route path={"/product"} >
           <ProductPage />
         </Route>
-
-
+        <Route path={"/about"} >
+          <ProductPage />
+        </Route>
       </Router>
     </div>
   );
