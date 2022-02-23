@@ -3,9 +3,21 @@ import { useParams, Link } from "react-router-dom";
 import { ShopContext } from '../context/shopContext';
 
 const ProductPage = () => {
+  const { handle } = useParams();
+  const {
+    fetchProductWithHandle,
+    addItemToCheckout,
+    product
+  } = useContext(ShopContext);
+
+  useEffect(()=>{
+    fetchProductWithHandle(handle)
+  }, [fetchProductWithHandle, handle])
+
+  if (!product) return <div>Loading...</div>
   return (
     <div>
-      <h1>Product page</h1>
+      <h1>{product.title}</h1>
     </div>
   );
 }
