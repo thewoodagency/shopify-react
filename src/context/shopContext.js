@@ -97,7 +97,7 @@ class ShopProvider extends Component {
         ...this.state,
         fetchAllProducts: this.fetchAllProducts,
         fetchProductWithHandle: this.fetchProductWithHandle,
-        addItemtoCheckout: this.addItemToCheckout,
+        addItemToCheckout: this.addItemToCheckout,
         removeLineItem: this.removeLineItem,
         closeCart: this.closeCart,
         openCart: this.openCart,
