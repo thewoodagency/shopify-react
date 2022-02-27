@@ -1,10 +1,9 @@
 import React, { useContext } from 'react'
 import { ShopContext } from "../context/shopContext";
-import { MdMenu, MdShoppingBasket } from "react-icons/all";
 
 import {
   Button,
-  Grid,Flex,Image,Text,
+  Grid,Flex,Image,Text,Link,
   Drawer,
   DrawerBody,
   DrawerFooter,
@@ -18,17 +17,18 @@ import {CloseIcon} from "@chakra-ui/icons";
 const Cart = () => {
   const { isCartOpen, closeCart, checkout, removeLineItem  } = useContext(ShopContext);
 
-  console.log('checkout from cart', checkout);
-  if (!checkout.lineItems) {
-    console.log('cart is empty');
-    return  <div>Loading...</div>
-  }
+  console.log('checkout from cart', checkout.lineItems?.length);
+  // if (!checkout.lineItems) {
+  //   console.log('cart is empty');
+  //   return  <div>Cart is empty</div>
+  // }
   return (
     <>
       <Drawer
         isOpen={isCartOpen}
         placement='right'
         onClose={closeCart}
+        size="sm"
       >
         <DrawerOverlay />
         <DrawerContent>
@@ -37,6 +37,7 @@ const Cart = () => {
 
           <DrawerBody>
             {
+              !checkout.lineItems?.length ? <Text>Cart is empty</Text> :
               checkout.lineItems.map(item => (
                   <Grid templateColumns="repeat(4, 1fr)" gap={1} key={item.id}>
                     <Flex alignItems="center" justifyContent="center">
@@ -56,9 +57,13 @@ const Cart = () => {
             }
           </DrawerBody>
 
-          <DrawerFooter>
-            <Button colorScheme='blue'>Checkout</Button>
-          </DrawerFooter>
+          { checkout.lineItems?.length ?
+            <DrawerFooter>
+              <Button w="100%" colorScheme='blue'><Link href={checkout.webUrl}>Checkout</Link></Button>
+            </DrawerFooter>
+
+            : null
+          }
         </DrawerContent>
       </Drawer>
     </>
