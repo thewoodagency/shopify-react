@@ -11,7 +11,7 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <h1><Link to="/">Store</Link></h1>
+        <h1><Link to="/">TWA Store</Link></h1>
         <NavBar/>
         <NavMenu />
         <Cart/>
